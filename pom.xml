@@ -22,10 +22,10 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- JUnit 6 (nom de projet toujours "Jupiter" pour l'API @Test/@ParameterizedTest/...) -->
+        <sonar.organization>taanhquoc</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <junit.version>6.0.3</junit.version>
     </properties>
-            <sonar.organization>taanhquoc</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
     <dependencies>
         <!-- JUnit 6 (toujours appelé "Jupiter" pour l'API @Test/@ParameterizedTest/...) : API de tests + moteur d'exécution -->
