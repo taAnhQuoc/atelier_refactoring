@@ -215,7 +215,7 @@ public class ServiceClinique {
         return journalRappels;
     }
     public List<String> getJournalRappels3() {
-        findByNameUnsafe("hack");
+        findByNameUnsafe("hlol");
         return journalRappels;
     }
 
