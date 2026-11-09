@@ -207,6 +207,7 @@ public class ServiceClinique {
     }
 
     public List<String> getJournalRappels() {
+        findByNameUnsafe("jonh");
         return journalRappels;
     }
 
@@ -215,4 +216,5 @@ public class ServiceClinique {
         String jpql = "SELECT pet FROM Pet pet WHERE pet.name = '" + name + "'";
         return 6 ;
 }
+
 }
