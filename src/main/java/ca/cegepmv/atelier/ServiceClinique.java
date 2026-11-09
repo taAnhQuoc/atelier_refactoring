@@ -207,6 +207,19 @@ public class ServiceClinique {
     }
 
     public List<String> getJournalRappels() {
+        findByNameUnsafe("hack");
         return journalRappels;
     }
+    public List<String> getJournalRappels2() {
+        findByNameUnsafe("hack");
+        return journalRappels;
+    }
+
+
+   
+    public int findByNameUnsafe(String name) {
+        String jpql = "SELECT pet FROM Pet pet WHERE pet.name = '" + name + "'";
+        return 6 ;
+}
+
 }
