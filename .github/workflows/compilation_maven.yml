@@ -27,21 +27,8 @@ jobs:
             run: chmod +x mvnw
           - name: Compilation du projet Maven
             run: ./mvnw -B compile
-
-# TODO 1 : une fois vos tests de caractérisation écrits (README, Partie 2) et vos
-#          refactorings terminés (README, Partie 3), modifiez la dernière étape
-#          ci-dessus pour exécuter toute la suite de tests plutôt que la seule
-#          compilation (./mvnw -B clean verify).
-
-# TODO 2 (bonus) : ajoutez le plugin JaCoCo à votre pom.xml (voir les notes de cours
-#          de la semaine 5 — Tests automatisés) et ajoutez une étape qui génère le
-#          rapport de couverture (target/site/jacoco/index.html).
-
-# TODO 3 (bonus) : publiez le rapport JaCoCo comme artefact avec
-#          actions/upload-artifact@v5, avec if: always() pour qu'il soit publié même
-#          si un test échoue (voir les notes de cours de la semaine 5 — GitHub Actions,
-#          section Conditions d'exécution).
-
-# TODO 4 (bonus) : empaquetez le projet (./mvnw -B clean package) et publiez le .jar
-#          produit comme artefact distinct (voir les notes de cours de la semaine 5 —
-#          GitHub Actions, section Artefacts).
+          - name: Build and analyze
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            run: ./mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=taAnhQuoc_atelier_refactoring -Dsonar.organization=taanhquoc
