@@ -209,4 +209,10 @@ public class ServiceClinique {
     public List<String> getJournalRappels() {
         return journalRappels;
     }
+
+   
+    public int findByNameUnsafe(String name) {
+        String jpql = "SELECT pet FROM Pet pet WHERE pet.name = '" + name + "'";
+        return 6 ;
+}
 }
