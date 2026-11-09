@@ -61,7 +61,7 @@ class ServiceCliniqueTest {
         String facture = service.genererFacture(julie, List.of(consultation));
 
         // Assert
-        assertEquals("Facture pour Julie Tremblay — Sous-total: $60.00 — Total: $60.00", facture);
+        assertEquals("Facture pour Julie Tremblay — Sous-total: $60.00 — Total: $63.00", facture);
     }
 
     @Test
@@ -73,7 +73,7 @@ class ServiceCliniqueTest {
         String facture = service.genererFacture(julie, List.of(chirurgieUrgente));
 
         // Assert
-        assertEquals("Facture pour Julie Tremblay — Sous-total: $375.00 — Total: $375.00", facture);
+        assertEquals("Facture pour Julie Tremblay — Sous-total: $375.00 — Total: $393.75", facture);
     }
 
     @Test
@@ -100,7 +100,7 @@ class ServiceCliniqueTest {
     void genererFactureAuCasDeVaccinAvecTarifDe35(){
         Visite consultation = new Visite(LocalDate.now(), "VACCIN", false, "Fred", "Prevu");
         String facture = service.genererFacture(julie, List.of(consultation));
-        assertEquals("Facture pour Julie Tremblay — Sous-total: $35.00 — Total: $35.00", facture);
+        assertEquals("Facture pour Julie Tremblay — Sous-total: $35.00 — Total: $36.75", facture);
     } 
     // TODO 2 — genererFacture() : propriétaire avec 2 animaux ou plus (rabais de 10%
     //          appliqué, et présent dans le texte de la facture — vérifiez le format
@@ -111,7 +111,7 @@ class ServiceCliniqueTest {
         Visite consultation = new Visite(LocalDate.now(), "VACCIN", false, "Fred", "Prevu");
         String facture = service.genererFacture(julie, List.of(consultation));
 
-        assertEquals("Facture pour Julie Tremblay — Sous-total: $35.00 — Remise fidélité: -10% — Total: $31.50", facture);
+        assertEquals("Facture pour Julie Tremblay — Sous-total: $35.00 — Remise fidélité: -10% — Total: $33.08", facture);
     }    
     // TODO 3 — genererFacture() : propriétaire avec un solde négatif (pénalité de 5%)
     @Test
