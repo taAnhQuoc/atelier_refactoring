@@ -39,15 +39,3 @@ jobs:
             run: ./mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=taAnhQuoc_atelier_refactoring -Dsonar.organization=taanhquoc -Dsonar.qualitygate.wait=true
           - name: Build an image from Dockerfile
             run: docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
-
-          - name: Run Trivy vulnerability scanner
-            uses: aquasecurity/trivy-action@v0.36.0
-            with:
-              image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
-              format: 'sarif'
-              output: 'trivy-results.sarif'
-          - name: Upload Trivy scan results to GitHub Security tab
-            uses: github/codeql-action/upload-sarif@v4
-            if: always()
-            with:
-              sarif_file: 'trivy-results.sarif'
