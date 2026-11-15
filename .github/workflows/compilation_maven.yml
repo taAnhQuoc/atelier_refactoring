@@ -25,10 +25,17 @@ jobs:
               cache: maven
           - name: Donner accès en exécution au wrapper
             run: chmod +x mvnw
-          - name: Compilation du projet Maven
-            run: ./mvnw -B compile
+          - name: Build with Maven
+            run: ./mvnw -B package -DskipTests
+          - name: Publier le .jar en artefact
+            uses: actions/upload-artifact@v5
+            with:
+              name: application-jar
+              path: target/*.jar      
           - name: Build and analyze
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             run: ./mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=taAnhQuoc_atelier_refactoring -Dsonar.organization=taanhquoc -Dsonar.qualitygate.wait=true
+          - name: Build an image from Dockerfile
+            run: docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
